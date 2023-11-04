@@ -149,7 +149,7 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
           }
         }}
       > 
-      {recevied ? "Received" : "Send"} 
+      {recevied ? "Sent" : "Send"} 
       </Button>
       {error ? <Alert severity="warning">Please enter your major and your phone number. </Alert> : <></>}
     </Box>
