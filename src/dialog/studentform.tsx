@@ -30,7 +30,8 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
       setError(true);
       return;
     }
-
+    setReceived(true);
+    setError(false);
 
     const data = {
       phoneNumber: "201272404140",
