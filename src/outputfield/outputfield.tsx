@@ -79,7 +79,7 @@ const OutputField: React.FC<IOutputFieldProps> = (props: IOutputFieldProps) => {
         transition: 'opacity 0.5s ease',
         animation: 'verticalwipe 0.5s ease'
       }}>
-      { dataToShow.length !== 0 ? "Current State: " + getCurrentState() : ""}
+      { dataToShow.length !== 0 || data.deprivedFlag === 1 ? "Current State: " + getCurrentState() : ""}
     </Typography>
   
  </Box>
