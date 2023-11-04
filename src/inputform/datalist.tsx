@@ -73,7 +73,7 @@ const GroupItems = styled('ul')({
         </li>
       )}
       sx={{
-        width: '300px',
+        width: '350px',
         fontFamily: 'Oswald',
         boxShadow: "none",
         ".MuiOutlinedInput-notchedOutline": { border: '1px solid black'},

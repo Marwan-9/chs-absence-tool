@@ -30,6 +30,7 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
       setError(true);
       return;
     }
+    setReceived(true);
     setError(false);
 
     const data = {
@@ -41,7 +42,6 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
     try {
       const response = await axios.post('https://credithub.onrender.com/api/contact/volunteer', data);
       console.log('Response data:', response.data);
-      setReceived(true)
     } catch (error) {
       console.error('Request failed:', error);
     }
@@ -134,7 +134,7 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
           />
         </FormControl>
       <Button
-        onClick={recevied ? ()=>{return;} :sendData}
+        onClick={recevied ? ()=>{return;} : sendData}
         sx={{
           backgroundColor: recevied ? '#04AA6D' : '#3498db',
           color: '#fff',

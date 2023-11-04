@@ -138,7 +138,7 @@ export default function KeepMountedModal() {
               <StudentForm/>
               <Typography 
               sx={{
-                fontSize: '12px',
+                fontSize: '13px',
                 marginBottom:'10px',
                 fontFamily: 'Oswald'
 
