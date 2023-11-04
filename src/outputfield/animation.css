@@ -1,0 +1,34 @@
+/* styles.css */
+.divDownwards {
+  animation-fill-mode: forwards;
+  animation-duration: 0.75s;
+  animation-timing-function: steps(1080, end);
+  animation-name: verticalwipe;
+}
+
+.linearWipe {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: linearWipeText 1.5s steps(720, end);
+}
+  
+  @keyframes linearWipeText {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+
+  @keyframes verticalwipe {
+    from {
+      height: 0;
+    }
+    to {
+      height: 'max-contnet';
+    }
+  }
+
