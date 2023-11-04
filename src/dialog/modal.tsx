@@ -4,7 +4,7 @@ import BylawBox from './bylawbox';
 import StudentForm from './studentform';
 
 const style: React.CSSProperties = {
-  fontSize: '25px',
+  fontSize: '22px',
   fontWeight: '700', 
   fontFamily: 'Oswald'
 }
@@ -86,11 +86,11 @@ export default function KeepMountedModal() {
                   active
                   onClick={handleClose}
                   sx={{
-                    background:'#04AA6D'
+                    background:'#04AA6D',
                   }}>
                   <>
                     <Typography sx={style}> Old Bylaw </Typography>
-                    <Typography sx={{...style, fontFamily:'Cairo', fontSize:'22px'}}> لائحة قديمة </Typography>
+                    <Typography sx={{...style, fontFamily:'Cairo', fontSize:'20px'}}> لائحة قديمة </Typography>
                   </>
                 </BylawBox>
                 <Divider orientation='vertical'/>
@@ -104,7 +104,9 @@ export default function KeepMountedModal() {
                 >
                 <>
                     <Typography sx={style}> New Bylaw </Typography>
-                    <Typography sx={{...style, fontFamily:'Cairo', fontSize:'22px'}}> لائحة جديدة </Typography>
+                    <Typography sx={{...style, fontFamily:'Cairo', fontSize:'20px'}}> لائحة جديدة </Typography>
+                    <Typography sx={{...style, fontFamily:'Cairo', fontSize:'20px'}}> (Soon)</Typography>
+
                   </>
                 </BylawBox>
             </Box>

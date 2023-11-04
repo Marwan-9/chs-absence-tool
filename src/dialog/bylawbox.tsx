@@ -16,8 +16,10 @@ const BylawBox: React.FC<IBylawBoxProps> = (props: IBylawBoxProps) => {
     <Box 
       onClick={onClick} 
       sx={{
-        width: '500px',
-        height: '125px',
+        width: '550px',
+        height: '120px',
+        padding:"0px 5px",
+        boxSizing:'border-box',
         borderRadius: '10px',
         background: 'green',
         display: 'flex',

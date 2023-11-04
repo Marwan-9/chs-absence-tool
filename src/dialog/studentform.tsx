@@ -16,6 +16,12 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
   const [phone, setPhone] = React.useState<string>("");
   const majors = ["AET", "AEM", "CCE", "CEM", "CIE", "EEE", "HEM", "IEM", "MEE", "MEM", "MDE", "PPC", "SEE", "STE", "WEE"];
 
+  const handleChange = (value: string) => {
+    const regex = /^[0-9\b]+$/;
+    if (value === "" || regex.test(value)) {
+      setPhone(value);
+    }
+  };
   const sendData = async () => {
     const data = {
       phoneNumber: "201272404140",
@@ -79,7 +85,12 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
           <TextField 
             label=  'Phone Number'
             placeholder="Enter Your Number"
-            onChange={(event)=> setPhone(event.target.value)}
+            onChange={(event)=> handleChange(event.target.value)}
+            value={phone}
+            inputProps={{
+              inputMode: 'numeric',
+              pattern: '[0-9]*'
+            }}
             sx={{
               '@media screen and (max-width: 768px)': { width: 120 },
 
