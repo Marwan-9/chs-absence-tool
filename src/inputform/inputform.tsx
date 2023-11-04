@@ -77,7 +77,7 @@ const InputForm : React.FC<IInputFormProps> = (props: IInputFormProps) => {
           Absent Lecs: 
         </Typography>
         <BasicSelect 
-          options={["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]} 
+          options={["0", "1", "2", "3", "4", "5", "6"]} 
           onSelect={(selected)=>setLecturesCount(selected)} 
           selectedOption={lecturesCount}
           />
@@ -88,7 +88,7 @@ const InputForm : React.FC<IInputFormProps> = (props: IInputFormProps) => {
           Absent Tuts: 
         </Typography>
         <BasicSelect 
-          options={["0", "1", "2", "3", "4", "5", "6"]} 
+          options={["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]} 
           onSelect={(selected)=>setTutsCount(selected)}
           selectedOption={tutsCount}
           />

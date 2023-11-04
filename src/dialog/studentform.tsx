@@ -1,7 +1,7 @@
 
 import React from "react";
 import axios from "axios";
-import { Box,MenuItem, FormControl, Select, InputLabel, TextField, Button}  from '@mui/material';
+import { Box,MenuItem, FormControl, Select, InputLabel, TextField, Button, Alert}  from '@mui/material';
 
 interface IStudentFormProps{
   label?: string;
@@ -14,6 +14,9 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
 
   const [major, setMajor] = React.useState<string>("");
   const [phone, setPhone] = React.useState<string>("");
+  const [recevied, setReceived] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<boolean>(false);
+
   const majors = ["AET", "AEM", "CCE", "CEM", "CIE", "EEE", "HEM", "IEM", "MEE", "MEM", "MDE", "PPC", "SEE", "STE", "WEE"];
 
   const handleChange = (value: string) => {
@@ -23,6 +26,12 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
     }
   };
   const sendData = async () => {
+    if (major.length === 0 || phone.length === 0){
+      setError(true);
+      return;
+    }
+    setError(false);
+
     const data = {
       phoneNumber: "201272404140",
       text: "Major: " + major + ", Phone: " + phone,
@@ -32,6 +41,7 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
     try {
       const response = await axios.post('https://credithub.onrender.com/api/contact/volunteer', data);
       console.log('Response data:', response.data);
+      setReceived(true)
     } catch (error) {
       console.error('Request failed:', error);
     }
@@ -124,9 +134,9 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
           />
         </FormControl>
       <Button
-        onClick={sendData}
+        onClick={recevied ? ()=>{return;} :sendData}
         sx={{
-          backgroundColor: '#3498db',
+          backgroundColor: recevied ? '#04AA6D' : '#3498db',
           color: '#fff',
           border: 'none',
           borderRadius: '4px',
@@ -134,12 +144,14 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
           cursor: 'pointer',
           fontFamily: 'Oswald',
           '&: hover': {
-            transform: 'scale(1.02)', 
-            backgroundColor: '#3498db', 
+            transform: !recevied ? 'scale(1.02)' : "", 
+            backgroundColor: !recevied ? '#3498db' : "#04AA6D", 
           }
         }}
-      > Send 
+      > 
+      {recevied ? "Received" : "Send"} 
       </Button>
+      {error ? <Alert severity="warning">Please enter your major and your phone number. </Alert> : <></>}
     </Box>
   )
 }
