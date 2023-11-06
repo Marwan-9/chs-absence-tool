@@ -2,6 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { Box,MenuItem, FormControl, Select, InputLabel, TextField, Button, Alert}  from '@mui/material';
+import { regex } from "uuidv4";
 
 interface IStudentFormProps{
   label?: string;
@@ -18,15 +19,16 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
   const [error, setError] = React.useState<boolean>(false);
 
   const majors = ["AET", "AEM", "CCE", "CEM", "CIE", "EEE", "HEM", "IEM", "MEE", "MEM", "MDE", "PPC", "SEE", "STE", "WEE"];
+  const egyptianPhoneNumberRegex = /^(\+2)?(010|011|012|015)\d{8}$/;
 
   const handleChange = (value: string) => {
-    const regex = /^[0-9\b]+$/;
-    if (value === "" || regex.test(value)) {
+    const regex = /^[0-9+\b]+$/;
+    if (regex.test(value) || value === "") {
       setPhone(value);
     }
   };
   const sendData = async () => {
-    if (major.length === 0 || phone.length === 0){
+    if (major.length === 0 || phone.length === 0 || !egyptianPhoneNumberRegex.test(phone) ){
       setError(true);
       return;
     }
@@ -151,7 +153,7 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
       > 
       {recevied ? "Sent" : "Send"} 
       </Button>
-      {error ? <Alert severity="warning">Please enter your major and your phone number. </Alert> : <></>}
+      {error ? <Alert severity="warning">Please enter your major and a valid phone number. </Alert> : <></>}
     </Box>
   )
 }
