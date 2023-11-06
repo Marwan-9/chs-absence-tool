@@ -36,9 +36,9 @@ const StudentForm: React.FC<IStudentFormProps> = (props: IStudentFormProps) => {
     setError(false);
 
     const data = {
-      phoneNumber: "201115173559",
+      phoneNumber: "201556196975",
       text: "Major: " + major + ", Phone: " + phone,
-      apiKey: "7733515"
+      apiKey: "3327982"
     };
 
     try {
