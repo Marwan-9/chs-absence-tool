@@ -3,22 +3,26 @@ import { Box, Typography, Divider } from '@mui/material';
 
 const Footer: React.FC = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', paddingTop:'15px'}}>
-      <Divider />
+    <div style={{ display: 'flex', flexDirection: 'column', paddingTop:'15px', width: '100%'}}>
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'center',
           fontFamily: 'Oswald',
+          justifyContent: 'center',
           fontSize: '18px',
           color: 'whitesmoke',
           paddingBottom: '10px',
+          width: '100%'
+
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
+            alignSelf:'center',
+            justifyContent: 'center',
+
           }}
         >
           <Typography

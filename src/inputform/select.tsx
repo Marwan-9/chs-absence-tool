@@ -38,13 +38,15 @@ const BasicSelect: React.FC<IBasicSelectProps> = (props: IBasicSelectProps) => {
               padding:'5px 10px'
             },
             '& .MuiInputBase-root': {
-              padding:'20px'
+              padding:'20px',
+              fontFamily: 'Oswald',
+
             }
           }}
         >
         {
           options.map((value) => ( 
-            <MenuItem value={value}>{value}</MenuItem>
+            <MenuItem value={value} sx={{fontFamily: 'Oswald'}}>{value}</MenuItem>
           ))
         }
         </Select>

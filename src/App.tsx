@@ -12,7 +12,7 @@ const App : React.FC = () => {
   const [result, setResult] = React.useState<Result>({firstWarning:-1, secondWarning:-1, deprivedFlag:-1, possibleCombinations:[]});
   
   return (
-    <div style={{fontFamily: 'Barlow', display:'flex', flexDirection:'column'}} >
+    <div style={{fontFamily: 'Barlow', display:'flex', flexDirection:'column', height:'100vh'}} >
       <NavBar/>
       <KeepMountedModal/>
       <Box sx={{
