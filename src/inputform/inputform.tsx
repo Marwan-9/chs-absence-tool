@@ -21,22 +21,23 @@ const InputForm : React.FC<IInputFormProps> = (props: IInputFormProps) => {
 
   const [lecturesCount, setLecturesCount] = React.useState<string>("0");
   const [tutsCount, setTutsCount] = React.useState<string>("0");
-  const chosenCourseRef = React.useRef<course>();
+  const [chosenCourse, setChosenCourse] = React.useState<course>();
   const dataListRef = React.useRef<IDataListRef | null>(null); 
 
+  console.log(chosenCourse?.code.slice(0,3))
   const onClear = () => {
     onFormClear();
     setLecturesCount("0")
     setTutsCount("0")
+    setChosenCourse(undefined)
     if (dataListRef.current) 
       dataListRef.current.onClear();
   }
 
   const onSubmit = () => {
-    console.log(chosenCourseRef.current?.credits)
     const sumbitResult: IFormResult = {
-      courseID: chosenCourseRef.current?.code ? chosenCourseRef.current?.code : "" ,
-      credits: chosenCourseRef.current?.credits ? chosenCourseRef.current?.credits  : -1,
+      courseID: chosenCourse?.code ? chosenCourse?.code : "" ,
+      credits: chosenCourse?.credits ? chosenCourse?.credits  : -1,
       missedLecs: parseInt(lecturesCount),
       missedTuts: parseInt(tutsCount)
     }
@@ -68,7 +69,7 @@ const InputForm : React.FC<IInputFormProps> = (props: IInputFormProps) => {
         </Typography>
         <DataList 
           ref={dataListRef} 
-          onChoose={(chosen) => chosenCourseRef.current = chosen}
+          onChoose={(chosen) => setChosenCourse(chosen)}
         />
       </Box>
 
@@ -76,7 +77,8 @@ const InputForm : React.FC<IInputFormProps> = (props: IInputFormProps) => {
         <Typography sx={{width:'30%', fontFamily:'Oswald'}}>
           Absent Lecs: 
         </Typography>
-        <BasicSelect 
+        <BasicSelect  
+          disabled = {false}
           options={["0", "1", "2", "3", "4", "5", "6"]} 
           onSelect={(selected)=>setLecturesCount(selected)} 
           selectedOption={lecturesCount}
@@ -88,6 +90,7 @@ const InputForm : React.FC<IInputFormProps> = (props: IInputFormProps) => {
           Absent Tuts: 
         </Typography>
         <BasicSelect 
+          disabled = {false}
           options={["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]} 
           onSelect={(selected)=>setTutsCount(selected)}
           selectedOption={tutsCount}

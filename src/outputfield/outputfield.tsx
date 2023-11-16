@@ -64,7 +64,7 @@ const OutputField: React.FC<IOutputFieldProps> = (props: IOutputFieldProps) => {
               }}>
               <Typography className='linearWipe' sx={{fontSize:'18px', fontWeight:'500', fontFamily:'Oswald'}}>
 
-                {combination.lectures} Lectures  {combination.tutorials !== -1 ? combination.tutorials +  " and Tutorials" : ""}
+                {combination.lectures} Lectures {combination.tutorials !== -1 ? "and" + combination.tutorials + "Tutorials" : ""}
               </Typography>
             </Box>
           )

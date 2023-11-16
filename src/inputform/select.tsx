@@ -6,9 +6,10 @@ interface IBasicSelectProps {
   options: string[];
   selectedOption: string;
   onSelect: (selected: string) => void;
+  disabled?:  boolean;
 }
 const BasicSelect: React.FC<IBasicSelectProps> = (props: IBasicSelectProps) => {
-  const { label, options, selectedOption, onSelect } = props;
+  const { label, options, selectedOption, onSelect, disabled = true } = props;
 
   const handleChange = (event: SelectChangeEvent) => {
     onSelect(event.target.value)
@@ -19,6 +20,7 @@ const BasicSelect: React.FC<IBasicSelectProps> = (props: IBasicSelectProps) => {
       <FormControl fullWidth>
         <InputLabel>{label}</InputLabel> {/* Add the label here */}
         <Select
+          disabled = {disabled}
           value={selectedOption}
           defaultValue={options[0]}
           onChange={handleChange}
